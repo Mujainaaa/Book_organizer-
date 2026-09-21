@@ -1,0 +1,40 @@
+def main():
+    books = []
+
+    print("--- Book & Author Organizer ---")
+    print("Enter your books below. Type 'done' as the title when you are finished.\n")
+
+    # Loop to collect book and author inputs
+    while True:
+        title = input("Enter book title: ").strip()
+
+        # Exit condition
+        if title.lower() == "done":
+            break
+
+        author = input("Enter author name: ").strip()
+
+        # Save as a dictionary inside our list
+        books.append({"title": title, "author": author})
+        print("-> Added!\n")
+
+    # Check if any books were entered
+    if not books:
+        print("\nNo books were entered.")
+        return
+
+    # Sort the books alphabetically by title (case-insensitive)
+    sorted_books = sorted(books, key=lambda book: book["title"].lower())
+
+    # Display the sorted results with serial numbers
+    print("\n========================================")
+    print("       YOUR BOOK LIST (ALPHABETICAL)    ")
+    print("========================================")
+
+    for index, item in enumerate(sorted_books, start=1):
+        print(f"{index}. \"{item['title'].title()}\" by {item['author'].title()}")
+
+
+# Run the program
+if __name__ == "__main__":
+    main()
